@@ -12,7 +12,6 @@ function App() {
     const [page, setPage] = useState(1)
     const [total, setTotal] = useState(1)
     const [searchValue, setSearchValue] = useState('')
-    // const [isFav, setIsFav] = useState(false)
 
     /**Get Item list **/
     useEffect( () => {
@@ -37,6 +36,7 @@ function App() {
         setSearchValue(value)
     }
 
+    /**Add to Fav*/
     const addToFav = (id) =>{
         const copyList = [...pics];
         let index = copyList.findIndex((row)=>row.id == id)
