@@ -8,6 +8,11 @@ body{
 .ant-col{
   padding-bottom: 10px;
 }
+.ant-pagination-options-size-changer{
+  position: absolute;
+  top: 15%;
+  left: 10%;
+}
 .wrapper{
   display: block;
   margin: 10%;
@@ -27,4 +32,9 @@ body{
   /*position: absolute;*/
   width: 100%;
   object-fit: contain;
+}
+.pagination{
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
 }
