@@ -5,19 +5,30 @@
 body{
   box-sizing: border-box;
 }
+.App{
+  text-align: center;
+}
 .ant-col{
   padding-bottom: 10px;
 }
 .ant-pagination-options-size-changer{
   position: absolute;
-  top: 15%;
-  left: 10%;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+.ant-row{
+  margin-top: 40px;
 }
 .wrapper{
   display: block;
-  margin: 10%;
+  margin: 30px;
+  background-color: rgba(154, 149, 149, 0.09);
+  padding: 10px;
+  position: relative;
 }
 .image_wrapper{
+  background: white;
   width: 100%;
   position: relative;
   height: 300px;
@@ -37,4 +48,17 @@ body{
   margin: 20px auto;
   display: flex;
   justify-content: center;
+}
+.search-wrapper{
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+}
+.ant-input-group-addon button{
+  display: none;
+}
+input{
+  width: 100%;
+  max-width: 400px;
 }
