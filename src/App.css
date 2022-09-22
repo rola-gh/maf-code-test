@@ -37,7 +37,11 @@ body{
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
-.image_wrapper:hover{
+.image_wrapper svg{
+  position: absolute;
+  z-index: 10000;
+  bottom: 5px;
+  right: 10px;
 }
 .image_wrapper img{
   /*position: absolute;*/
@@ -61,4 +65,9 @@ body{
 input{
   width: 100%;
   max-width: 400px;
+}
+.empty-state{
+  display: block;
+  text-align: center;
+  margin: auto;
 }

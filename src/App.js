@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {Col, Pagination, Row} from 'antd';
 import {getImageList} from "./API";
 import { Input } from 'antd';
+import {AiOutlineHeart} from "react-icons/ai";
 const { Search } = Input;
 
 function App() {
@@ -42,24 +43,33 @@ function App() {
             />
         </div>
         <div className='wrapper'>
-            <Row justify="start" gutter={10}>
-                {pics?.map(pic=>
-                    <Col xs={24} xl={8}>
-                        <div className='image_wrapper'>
-                            <img alt="flickr"
-                                 src={`https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`}
-                            />
-                        </div>
-                    </Col>
-                )}
-            </Row>
-            <div className='pagination'>
-                <Pagination  defaultCurrent={1}
-                             total={total}
-                             onChange={onChangePagination}
-                             pageSizeOptions={[10, 20, 50]}
-                />
-            </div>
+            {pics.length>0 ?
+                <>
+                    <Row justify="start" gutter={10}>
+                        {pics?.map(pic=>
+                            <Col xs={24} xl={8}>
+                                <div className='image_wrapper'>
+                                    <img alt="flickr"
+                                         src={`https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`}
+                                    />
+                                    <AiOutlineHeart size={30} color={'#611e64'}/>
+                                </div>
+                            </Col>
+                        )}
+                    </Row>
+                    <div className='pagination'>
+                        <Pagination  defaultCurrent={1}
+                                     total={total}
+                                     onChange={onChangePagination}
+                                     pageSizeOptions={[10, 20, 50]}
+                        />
+                    </div>
+                </>
+                :
+                <div className='empty-state'>
+                    There is no data here
+                </div>
+            }
         </div>
     </div>
     );
