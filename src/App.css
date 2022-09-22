@@ -1,3 +1,30 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  box-sizing: border-box;
+}
+.ant-col{
+  padding-bottom: 10px;
+}
+.wrapper{
+  display: block;
+  margin: 10%;
+}
+.image_wrapper{
+  width: 100%;
+  position: relative;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+.image_wrapper:hover{
+}
+.image_wrapper img{
+  /*position: absolute;*/
+  width: 100%;
+  object-fit: contain;
 }
