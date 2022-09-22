@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {Col, Pagination, Row} from 'antd';
 import {getImageList} from "./API";
 import { Input } from 'antd';
-import {AiOutlineHeart} from "react-icons/ai";
+import {AiFillHeart, AiOutlineHeart} from "react-icons/ai";
 const { Search } = Input;
 
 function App() {
@@ -12,13 +12,18 @@ function App() {
     const [page, setPage] = useState(1)
     const [total, setTotal] = useState(1)
     const [searchValue, setSearchValue] = useState('')
+    // const [isFav, setIsFav] = useState(false)
 
     /**Get Item list **/
     useEffect( () => {
          getImageList(perPage, page, searchValue).then(res => {
-             setPics(res.photo)
+             const newList = res.photo.map(pic =>
+                 ({...pic, isFav: false})
+             )
+             setPics(newList)
              setTotal(res.pages)
-         } )
+         })
+
     },[perPage, page, searchValue])
 
     /**Pagination**/
@@ -32,6 +37,12 @@ function App() {
         setSearchValue(value)
     }
 
+    const addToFav = (id) =>{
+        const copyList = [...pics];
+        let index = copyList.findIndex((row)=>row.id == id)
+        copyList[index].isFav = true
+        setPics(copyList)
+    }
     return (
       <div className="App">
         <div className='search-wrapper'>
@@ -52,7 +63,11 @@ function App() {
                                     <img alt="flickr"
                                          src={`https://farm${pic.farm}.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}.jpg`}
                                     />
-                                    <AiOutlineHeart size={30} color={'#611e64'}/>
+                                    <span onClick={()=>addToFav(pic.id)}>
+                                        {pic?.isFav?
+                                            <AiFillHeart size={30} color={'#b355bb'}/> : <AiOutlineHeart size={30} color={'#b355bb'}/>
+                                        }
+                                    </span>
                                 </div>
                             </Col>
                         )}
